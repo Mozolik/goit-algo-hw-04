@@ -2,16 +2,21 @@
 def total_salary(path):
     try:
         with open(path, 'r', encoding='utf-8') as file:
-            SumLine = 0
+            sum_line = 0
             line_count = 0
-            for StringLine in file.readlines():
-                content = StringLine.split(",")
-                SumLine += int(content[1].strip())
+            for string_line in file.readlines():
+                content = string_line.split(",")
+                sum_line += float(content[1].strip())
                 line_count += 1
-            
-            average = SumLine//line_count
-            print(f"Загальна сума заробітної плати: {SumLine}, Середня заробітна плата: {average}") 
+            try:
+                average = sum_line/line_count
+                return (sum_line, average)
+            except ZeroDivisionError:
+                print("Помика ділення на 0")
+                return ()
     except FileNotFoundError:
         print("Файл не знайдено")
-    except Exception as dataEror:
-        print(f"Сталася помилка: {dataEror}")
+        return ()
+    except Exception as data_eror:
+        print(f"Сталася помилка: {data_eror}")
+        return ()
