@@ -28,11 +28,7 @@ def phone_print(args, contacts):
     if value != None:
         return contacts[name]
     else:
-        return "contact is not lost" 
-
-def all_print(contacts):
-    for key, value in contacts.items():
-        print(f"{key} {value}")    
+        return "contact is not lost"   
 
 def main():
     contacts = {}
@@ -53,7 +49,8 @@ def main():
         elif command == "phone":
             print(phone_print(args, contacts))
         elif command == "all":
-            all_print(contacts)
+            for key, value in contacts.items():
+                print(f"{key} {value}")   
         else:
             print("Invalid command.")
 
