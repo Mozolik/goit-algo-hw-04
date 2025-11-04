@@ -30,6 +30,12 @@ def phone_print(args, contacts):
     else:
         return "contact is not lost"   
 
+def all_print(contacts):
+    string_value = ""
+    for key, value in contacts.items():
+        string_value += f"{key} {value}\n"    
+    return string_value.strip() 
+
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
@@ -49,8 +55,7 @@ def main():
         elif command == "phone":
             print(phone_print(args, contacts))
         elif command == "all":
-            for key, value in contacts.items():
-                print(f"{key} {value}")   
+            print(all_print(contacts))  
         else:
             print("Invalid command.")
 
